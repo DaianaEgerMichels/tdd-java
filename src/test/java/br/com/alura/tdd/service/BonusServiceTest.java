@@ -17,4 +17,12 @@ public class BonusServiceTest {
 
         assertEquals(new BigDecimal("0.00"), bonus);
     }
+
+    @Test
+    public void deveriaRetornarDezPorCentoDoSalario(){
+        BonusService bonusService = new BonusService();
+        BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Karen", LocalDate.now(), new BigDecimal(2000.00)));
+
+        assertEquals(new BigDecimal("200.00"), bonus);
+    }
 }
