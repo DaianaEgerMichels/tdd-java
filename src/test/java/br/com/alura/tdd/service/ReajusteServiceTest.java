@@ -22,6 +22,7 @@ public class ReajusteServiceTest {
         // aplica o método de reajuste
         service.concederReajuste(funcionario, Desempenho.A_DESEJAR);
 
+        // valida se o método de reajuste funciona
         assertEquals(new BigDecimal("1030.00"), funcionario.getSalario());
 
 
