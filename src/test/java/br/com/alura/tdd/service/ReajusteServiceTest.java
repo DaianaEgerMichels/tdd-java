@@ -1,6 +1,7 @@
 package br.com.alura.tdd.service;
 
 import br.com.alura.tdd.modelo.Funcionario;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -13,13 +14,13 @@ public class ReajusteServiceTest {
     private ReajusteService service;
     private Funcionario funcionario;
 
-    private void inicializar() {
+    @BeforeEach
+    public void inicializar() {
         this.service = new ReajusteService();
         this.funcionario = new Funcionario("Lara", LocalDate.now(), new BigDecimal("1000.00"));
     }
     @Test
     public void reajusteDeveriaSerDeTresPorcentoQuandoDesempenhoForADesejar() {
-        inicializar();
 
         // aplica o método de reajuste
         service.concederReajuste(funcionario, Desempenho.A_DESEJAR);
@@ -32,7 +33,6 @@ public class ReajusteServiceTest {
 
     @Test
     public void reajusteDeveriaSerDeQuinzePorcentoQuandoDesempenhoForBom() {
-        inicializar();
 
         service.concederReajuste(funcionario, Desempenho.BOM);
 
@@ -43,7 +43,6 @@ public class ReajusteServiceTest {
 
     @Test
     public void reajusteDeveriaSerDeVintePorcentoQuandoDesempenhoForOtimo() {
-        inicializar();
 
         service.concederReajuste(funcionario, Desempenho.OTIMO);
 
