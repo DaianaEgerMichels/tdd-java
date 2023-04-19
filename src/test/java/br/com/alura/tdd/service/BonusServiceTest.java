@@ -19,7 +19,7 @@ public class BonusServiceTest {
             bonusService.calcularBonus(new Funcionario("Cristal", LocalDate.now(), new BigDecimal(12000.00)));
             fail("Não deu a exception!");
         } catch (Exception e) {
-
+            assertEquals("Funcionário com salário superior a R$10000,00 não pode receber bonificação!", e.getMessage());
         }
     }
 
