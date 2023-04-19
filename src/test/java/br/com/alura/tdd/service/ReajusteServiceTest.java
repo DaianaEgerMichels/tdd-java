@@ -1,6 +1,7 @@
 package br.com.alura.tdd.service;
 
 import br.com.alura.tdd.modelo.Funcionario;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -10,14 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReajusteServiceTest {
 
+    private ReajusteService service;
+    private Funcionario funcionario;
 
+    @BeforeEach
+    public void inicializar() {
+        this.service = new ReajusteService();
+        this.funcionario = new Funcionario("Lara", LocalDate.now(), new BigDecimal("1000.00"));
+    }
     @Test
     public void reajusteDeveriaSerDeTresPorcentoQuandoDesempenhoForADesejar() {
-        // classe service para gerenciar o reajuste do salário
-        ReajusteService service = new ReajusteService();
-
-        // funcionario criado para validar o método de reajuste
-        Funcionario funcionario = new Funcionario("Lara", LocalDate.now(), new BigDecimal("1000.00"));
 
         // aplica o método de reajuste
         service.concederReajuste(funcionario, Desempenho.A_DESEJAR);
@@ -30,9 +33,6 @@ public class ReajusteServiceTest {
 
     @Test
     public void reajusteDeveriaSerDeQuinzePorcentoQuandoDesempenhoForBom() {
-        ReajusteService service = new ReajusteService();
-
-        Funcionario funcionario = new Funcionario("Toddy", LocalDate.now(), new BigDecimal("1000.00"));
 
         service.concederReajuste(funcionario, Desempenho.BOM);
 
@@ -43,9 +43,6 @@ public class ReajusteServiceTest {
 
     @Test
     public void reajusteDeveriaSerDeVintePorcentoQuandoDesempenhoForOtimo() {
-        ReajusteService service = new ReajusteService();
-
-        Funcionario funcionario = new Funcionario("Kefera", LocalDate.now(), new BigDecimal("1000.00"));
 
         service.concederReajuste(funcionario, Desempenho.OTIMO);
 
